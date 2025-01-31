@@ -81,6 +81,9 @@ loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots"
 good_loot_options = ["Health Potion", "Leather Boots"]
 bad_loot_options = ["Poison Potion"]
 
+# Lab04 - Q4
+belt = []
+
 # Lab04 - Q1
 #Define the Monster Power
 monster_power = {
@@ -153,6 +156,38 @@ input("Roll the dice for the monster's health points (Press enter)")
 m_health_points = random.choice(diceOptions)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
+# Lab 04 - Q5
+print("you find a loot bag! look inside to find 2 items")
+print("Roll for the first item (Press Enter)")
+loot_roll = random.choice(range(1, len(loot_options) + 1))
+loot = loot_options.pop[loot_roll - 1]
+belt.append(loot)
+print("your belt:", belt)
+
+# Lab 04 - Q6 - item 2
+print("Roll for the second item (Press Enter)")
+loot_roll = random.choice(range(1, len(loot_options) + 1))
+loot = loot_options.pop[loot_roll - 1]
+belt.append(loot)
+print("your belt:", belt)
+
+# Lab 04 - Q7 - Sort the belt
+print("You got the loots, so organize your belt alphabetically:")
+belt.sort()
+print("Your belt: ", belt)
+
+#Lab04 Q8 - use the belt
+print("you see a monster in the distance! So, quicly use your first item:")
+first_item = belt.pop(0)
+if first_item in good_loot_options:
+    health_points = min(6, (health_points + 2))
+    print("You used "+ first_item + "to hurt your health to " + str(health_points))
+elif first_item in bad_loot_options:
+    health_points = max(0, (health_points - 2))
+    print("You used "+ first_item + "to hurt your health to " + str(health_points))
+else:
+    print("You used "+ first_item + "but it's not helpful")
+
 input("Analyze the roll (Press enter)")
 # Compare Player vs Monster's strength
 print("--- You are matched in strength: " + str(combat_strength == m_combat_strength))
@@ -164,6 +199,11 @@ print("--- You have a strong player: " + str((combat_strength + health_points) >
 # Roll for the Monster's Power
 input("Roll the dice for the monster's power (Press enter)")
 power_roll = random.choice(["Fire Magic", "freezing Time", "Super Hearing"])
+
+# Lab 04 - Q3
+# Increase the Monster Combat Strength by it's Power
+m_combat_strength = min(6, m_combat_strength+monster_power[power_roll])
+print("The Monster Combat Strength is now " + str(m_combat_strength)+" using the: "+power_roll)
 # Loop while the monster and the player are alive. Call fight sequence functions
 print("You meet the monster. FIGHT!!")
 while m_health_points > 0 and health_points > 0:
