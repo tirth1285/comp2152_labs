@@ -219,21 +219,23 @@ if not input_invalid:
     input_invalid = True
     while input_invalid and tries in range(5):
         print("    |", end="    ")
+        tries = tries + 1
 
         # Lab 5 - Question 1:
         hero_name = input("Enter your Hero's name (in two words)")
-
-        if:
+        name = hero_name.split()
+        if len(name) != 2:
             print("    |    Please enter a name with two parts (separated by a space)")
 
         else:
-            if:
+            if not name[0].isalpha() or not name[1].isalpha():
                 print("    |    Please enter an alphabetical name")
-
+                tries +=1
             else:
-
+                short_name = name[0][0:2:1] + name[1][0:1:1]
                 print("    |    I'm going to call you " + short_name + " for short")
-
+                input_invalid = False
     if not input_invalid:
         stars_display = "*" * num_stars
         # Lab 5 - Question 2:
+        print("  |  Hero " + short_name + "gets <" + stars_display + "> starts")
