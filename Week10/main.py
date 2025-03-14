@@ -28,4 +28,4 @@ try:
             except Exception as e:
                 print(f"Error executing query_2: {e}")
 except sqlite3.Error as e :
-    print(f"Database execution Error: {e}
+    print(f"Database execution Error: {e}")
